@@ -1,3 +1,4 @@
+//用短除法计算最大公约数
 #include<stdio.h>
 int main()
 {
