@@ -1,0 +1,42 @@
+#include<stdio.h>
+int maxsum(int a[],int n);
+int main()
+{
+	int a[100];
+	int n,res;
+	printf("the amount of numbers=");
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		printf("the %dth number=",i+1);
+		scanf("%d",&a[i]);
+	}
+	res=maxsum(a,n);
+	printf("the max sum=%d",res);
+	return 0;
+}
+int maxsum(int a[],int n)
+{
+	int tempsum=0,res=0;
+	int i=0,j=0;
+	for(i;i<n;i++)
+	{
+		tempsum=0;
+		for(j=i;j<n;j++)
+		{
+			tempsum+=a[j];
+			if(tempsum>res)
+			{
+				res=tempsum;
+			}
+		}
+	}
+	return res;
+}
+
+/*最大子列和问题的暴力求解方法
+即，求出所有存在的子列和即可，
+对数组做二重遍历，设定子列和起始点i，子列和终止点j
+从第一位的i开始，每次往后多加一位让j从i+1到数组的数目，
+每出现更大的和，则替换之前的和，当j=n时，i++继续即可。
+复杂度n平方*/ 
