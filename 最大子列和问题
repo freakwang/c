@@ -1,0 +1,41 @@
+#include<stdio.h>
+int maxsum(int a[],int n);
+int main()
+{
+	int a[100];
+	int n,res;
+	printf("the amount of numbers=");
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		printf("the %dth number=",i+1);
+		scanf("%d",&a[i]);
+	}
+	res=maxsum(a,n);
+	printf("the max sum=%d",res);
+	return 0;
+}
+
+int maxsum(int a[],int n)
+{
+	int tempsum=0,max=0;
+	int i;
+	for(i=0;i<n;i++)
+	{
+		tempsum+=a[i];
+		if(tempsum>max){
+			max=tempsum;
+		}else if(tempsum<0){
+			tempsum=0;
+		}
+	}
+	return max;
+}
+
+
+/*简化的最大子列和问题求解算法
+将数组从左向右累加即可，若有负数的子列和
+则其不会使之后累加值继续变大，
+则意味着这一项先前累积的子列和应该舍弃
+即，从这一项再开始进行累加即可。*/ 
+ 
